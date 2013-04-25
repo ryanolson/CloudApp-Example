@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{#- use this block to select the id for the active nav-list item #}
+{%- block body_js_bottom %}
+    <script type="text/javascript">
+     $( "#nav-profile" ).addClass("active");
+    </script>
+{%- endblock body_js_bottom %}
+{%- block body %}
+    <div class="container">
+     <div class="row">
+      <div class="span3">
+       <ul class="nav nav-list bs-docs-sidenav">
+        <li id="nav-profile"><a href="{{ url_for("settings.profile") }}"><i class="icon-chevron-right"></i> Profile</a></li>
+        <li id="nav-settings"><a href="{{ url_for("settings.options") }}"><i class="icon-chevron-right"></i> Settings</a></li>
+        <li id="nav-emails"><a href="{{ url_for("settings.emails") }}"><i class="icon-chevron-right"></i> Emails</a></li>
+        <li id="nav-social"><a href="{{ url_for("settings.social") }}"><i class="icon-chevron-right"></i> Social</a></li>
+       </ul><!--/.nav nav-list bs-docs-sidenav affix -->
+      </div>
+      {%- block settings_body %}
+      {%- endblock settings_body %}
+     </div> <!--/.row-fluid -->
+    </div> <!--/.container -->
+{%- endblock %}

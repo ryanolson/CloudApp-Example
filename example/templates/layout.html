@@ -1,0 +1,29 @@
+{% extends "cloudapp/layout.html" %}
+{% from "cloudapp/macros/alert.html" import flash_messages %}
+{% block title %}Osila{% endblock %}
+{% block style %}
+   <link href="{{ url_for('static', filename="css/site.css") }}" rel="stylesheet">
+{% endblock style %}
+{% block body_content %}
+<!-- body_content -->
+    <!-- navigation bar -->
+    {% include "navbar.html" %}
+
+    <!-- alerts -->
+    {{ flash_messages() }}
+
+    <!-- body -->
+   {%- block body %}{% endblock %}
+<!--/body_content -->
+{% endblock %}
+{% block body_js_bottom %}
+<script type="text/javascript">
+$('.brewgle-typeahead').typeahead({
+    source: function (query, process) {
+        return $.get('/typeahead', { query: query }, function (data) {
+            return process(data.options);
+        });
+    }
+});
+</script>
+{% endblock %}
