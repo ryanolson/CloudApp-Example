@@ -16,14 +16,3 @@
    {%- block body %}{% endblock %}
 <!--/body_content -->
 {% endblock %}
-{% block body_js_bottom %}
-<script type="text/javascript">
-$('.brewgle-typeahead').typeahead({
-    source: function (query, process) {
-        return $.get('/typeahead', { query: query }, function (data) {
-            return process(data.options);
-        });
-    }
-});
-</script>
-{% endblock %}
